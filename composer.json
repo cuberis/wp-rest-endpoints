@@ -7,5 +7,12 @@
             "email": "robert@cuberis.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "Cuberis\\RestAPI\\": "src"
+        }
+    },
+    "require": {
+        "php": ">=7"
+    }
 }
