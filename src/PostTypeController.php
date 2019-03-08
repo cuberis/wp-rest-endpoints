@@ -116,7 +116,7 @@ class PostTypeController extends BaseController {
     // prepare our results
     if( !empty($results->posts) ) {
       foreach( $results->posts as $result => $value ) {
-        $filtered[] = apply_filters('sage_wp_api_result', array(
+        $filtered[] = apply_filters('cuberis_rest_cpt_result', array(
           'id' => $value->ID,
           'title' => get_the_title( $value->ID ),
           'html'  => $this->getTemplatePart( $value->ID, $partial )
