@@ -1,0 +1,12 @@
+{
+    "name": "cuberis/rest-endpoints",
+    "description": "Add custom Rest API endpoints to your WordPress site.",
+    "version": "1.0",
+    "authors": [
+        {
+            "name": "Robert Povelones",
+            "email": "robert@cuberis.com"
+        }
+    ],
+    "require": {}
+}
