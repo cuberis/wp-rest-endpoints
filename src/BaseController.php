@@ -20,6 +20,6 @@ abstract class BaseController {
     ]);
   }
 
-  abstract function getItems();
+  abstract function getItems( $request );
 
 }
