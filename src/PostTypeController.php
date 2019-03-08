@@ -4,13 +4,18 @@ namespace Cuberis\RestAPI;
 
 class PostTypeController extends BaseController {
 
+  /**
+   * The post type returned from endpoint.
+   *
+   * @var string
+   */
   public $post_type;
 
   /**
    * Constructor.
    *
    * @param string $post_type
-   * @param string $resource_name
+   * @param array  $settings
    */
   public function __construct( $post_type, $settings ) {
     $this->post_type = $post_type;
@@ -19,10 +24,11 @@ class PostTypeController extends BaseController {
 
 
   /**
-   * Process a partial file to be passed through the endpoint.
+   * Returns the HTML of the desired file.
+   * This will pass the WP post_ID to the included file.
    *
    * @param integer $id      The post ID
-   * @param string  $partial The php file to load
+   * @param string  $partial The php file to return
    */
   private function getTemplatePart( $id, $partial ) {
     $path = get_template_directory().'/templates/partials/';
@@ -91,8 +97,8 @@ class PostTypeController extends BaseController {
   }
 
   /**
-   * Get items for our collection. This is the callback for the
-   * register_rest_route function above
+   * Get items for our collection. This is the callback for
+   * register_rest_route() called in parent::registerRoute method.
    *
    * @param  WP_REST_Request           $request Full details about the request.
    * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
