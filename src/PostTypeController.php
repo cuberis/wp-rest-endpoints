@@ -87,7 +87,7 @@ class PostTypeController extends BaseController {
    */
   public function doQuery( $args ) {
 
-    if( isset($args['se']) && $args['se'] ) {
+    if( class_exists('SWP_Query') && isset($args['se']) && $args['se'] ) {
       $args['s'] = $args['se'];
       return new \SWP_Query( $args );
     }
