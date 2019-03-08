@@ -24,18 +24,16 @@ class PostTypeController extends BaseController {
    * @param integer $id      The post ID
    * @param string  $partial The php file to load
    */
-  private function getTemplatePart( $id, $partial = null ) {
+  private function getTemplatePart( $id, $partial ) {
+    $path = get_template_directory().'/templates/partials/';
+    $filename = $partial.'.php';
 
-    $abspath = get_template_directory().'/templates/partials/';
+    // return null if file doesn't exist
+    if( ! file_exists( $path.$filename ) ) return;
 
-    if( file_exists( $abspath . $partial . '.php' ) ) {
-      $filename = $partial;
-    } else {
-      $filename = 'partial';
-    }
-
+    // include the file
     ob_start();
-    include( $abspath . $filename . '.php' );
+    include( $path.$filename );
     return ob_get_clean();
   }
 
