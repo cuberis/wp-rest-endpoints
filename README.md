@@ -8,15 +8,12 @@ Add this to your `composer.json`:
 
 ```json
 "repositories": [
-  ...
   {
     "type": "vcs",
     "url": "https://github.com/cuberis/wp-rest-endpoints"
   }
-  ...
 ],
 "require": {
-  ...
   "cuberis/wp-rest-endpoints": "^0.1"
 }
 ```
