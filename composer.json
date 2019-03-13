@@ -1,6 +1,7 @@
 {
     "name": "cuberis/wp-rest-endpoints",
     "description": "Add custom Rest API endpoints to your WordPress site.",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Robert Povelones",
