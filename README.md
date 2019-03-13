@@ -1,5 +1,7 @@
 # Rest Endpoints for WordPress
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/cuberis/wp-rest-endpoints.svg?style=flat-square)](https://packagist.org/packages/cuberis/wp-rest-endpoints)
+
 Add custom Rest API endpoints to your WordPress site. This package provides a basic system for adding simple endpoints to the WP Rest API.
 
 ## Installing
