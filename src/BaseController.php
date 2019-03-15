@@ -1,8 +1,8 @@
 <?php
 
-namespace Cuberis\RestAPI;
+namespace Cuberis\REST_API;
 
-abstract class BaseController {
+abstract class Base_Controller {
 
   /**
    * Constructor
@@ -10,7 +10,7 @@ abstract class BaseController {
    * @param array $settings
    */
   public function __construct( $settings ) {
-    $this->registerRoute($settings);
+    $this->register_route($settings);
   }
 
   /**
@@ -19,14 +19,14 @@ abstract class BaseController {
    * @param  array $settings
    * @return void
    */
-  public function registerRoute( $settings ) {
+  public function register_route( $settings ) {
     $ns = trailingslashit( $settings['namespace'] );
     $v = trailingslashit( (string) $settings['version'] );
     $methods = array_key_exists('methods', $settings) ? $settings['methods'] : 'GET';
     register_rest_route( $ns.'v'.$v, $settings['endpoint'], [
       [
         'methods'   => $methods,
-        'callback'  => array( $this, 'getItems' ),
+        'callback'  => array( $this, 'get_items' ),
       ],
     ]);
   }
@@ -40,6 +40,6 @@ abstract class BaseController {
    * @param  WP_REST_Request           $request Full details about the request.
    * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
    */
-  abstract function getItems( $request );
+  abstract function get_items( $request );
 
 }

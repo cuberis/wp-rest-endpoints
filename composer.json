@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Cuberis\\RestAPI\\": "src"
+            "Cuberis\\REST_API\\": "src"
         }
     },
     "require": {

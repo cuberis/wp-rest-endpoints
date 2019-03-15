@@ -1,8 +1,8 @@
 <?php
 
-namespace Cuberis\RestAPI;
+namespace Cuberis\REST_API;
 
-class PostTypeController extends BaseController {
+class Post_Type_Controller extends Base_Controller {
 
   /**
    * The post type returned from endpoint.
@@ -30,7 +30,7 @@ class PostTypeController extends BaseController {
    * @param integer $id      The post ID
    * @param string  $partial The php file to return
    */
-  private function getTemplatePart( $id, $partial ) {
+  private function get_template_part( $id, $partial ) {
     $path = get_template_directory().'/templates/partials/';
     $filename = $partial.'.php';
 
@@ -49,7 +49,7 @@ class PostTypeController extends BaseController {
    * @param  object $request WP_REST_Response object
    * @return array
    */
-  public function buildQueryArgs( $params = null ) {
+  public function build_query_args( $params = null ) {
 
     // defaults
     $args = [
@@ -85,7 +85,7 @@ class PostTypeController extends BaseController {
    * @param  array  $args
    * @return object
    */
-  public function doQuery( $args ) {
+  public function do_query( $args ) {
 
     if( class_exists('SWP_Query') && isset($args['se']) && $args['se'] ) {
       $args['s'] = $args['se'];
@@ -103,17 +103,17 @@ class PostTypeController extends BaseController {
    * @param  WP_REST_Request           $request Full details about the request.
    * @return WP_REST_Response|WP_Error Response object on success, or WP_Error object on failure.
    */
-  public function getItems( $request ) {
+  public function get_items( $request ) {
 
     $type = $this->post_type;
     $request_params = $request->get_query_params();
     $partial = !is_array($type) ? 'partial-'.$type : 'partial-all';
 
     // get the args for the query
-    $args = apply_filters( 'cuberis_rest_api_query_args', $this->buildQueryArgs($request_params), $request_params );
+    $args = apply_filters( 'cuberis_rest_api_query_args', $this->build_query_args($request_params), $request_params );
 
     // do the query
-    $results = $this->doQuery( $args );
+    $results = $this->do_query( $args );
     $total_posts = $results->found_posts;
     $max_pages = ceil( $total_posts / (int) $args['posts_per_page'] );
 
@@ -123,7 +123,7 @@ class PostTypeController extends BaseController {
         $filtered[] = apply_filters('cuberis_rest_cpt_result', array(
           'id' => $value->ID,
           'title' => get_the_title( $value->ID ),
-          'html'  => $this->getTemplatePart( $value->ID, $partial )
+          'html'  => $this->get_template_part( $value->ID, $partial )
         ), $value->ID);
       }
     } else {

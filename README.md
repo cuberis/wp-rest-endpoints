@@ -1,8 +1,8 @@
-# Rest Endpoints for WordPress
+# REST API Endpoints for WordPress
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/cuberis/wp-rest-endpoints.svg?style=flat-square)](https://packagist.org/packages/cuberis/wp-rest-endpoints)
 
-Add custom Rest API endpoints to your WordPress site. This package provides a basic system for adding simple endpoints to the WP Rest API.
+Add custom REST API endpoints to your WordPress site. This package provides a basic system for adding simple endpoints to the WP REST API.
 
 ## Installing
 
@@ -25,7 +25,7 @@ https://my-website.com/wp-json/cuberis/v1/my-post-type
 ```php
 function my_register_rest_routes() {
 
-  new Cuberis\RestAPI\PostTypeController('my_post_type_slug', [
+  new Cuberis\REST_API\Post_Type_Controller('my_post_type_slug', [
     'namespace' => 'cuberis',
     'version'   => 1,
     'endpoint'  => 'my-post-type'
@@ -35,12 +35,12 @@ function my_register_rest_routes() {
 add_action( 'rest_api_init', 'my_register_rest_routes' );
 ```
 
-### Extend `BaseController` for a Custom Endpoint
+### Extend `Base_Controller` for a Custom Endpoint
 
 https://my-website.com/wp-json/cuberis/v1/whatever
 
 ```php
-class MyCustomController extends Cuberis\RestAPI\BaseController {
+class My_Custom_Controller extends Cuberis\REST_API\Base_Controller {
 
   public function __construct() {
     parent::__construct([
@@ -50,14 +50,14 @@ class MyCustomController extends Cuberis\RestAPI\BaseController {
     ]);
   }
 
-  public function getItems( $request ) {
+  public function get_items( $request ) {
     return rest_ensure_response(['Testing']);
   }
 
 }
 
 function my_register_rest_routes() {
-  new MyCustomController();
+  new My_Custom_Controller();
 }
 add_action( 'rest_api_init', 'my_register_rest_routes' );
 ```
