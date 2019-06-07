@@ -11,12 +11,10 @@ Add custom REST API endpoints to your WordPress site. This package provides a ba
 
 ## Installing
 
-1. Add this to your `composer.json`:
+1. Install via composer:
 
-```json
-"require": {
-  "cuberis/wp-rest-endpoints": "^0.1"
-}
+```
+composer require cuberis/wp-rest-endpoints
 ```
 
 2. Add your endpoints
