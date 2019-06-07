@@ -20,8 +20,6 @@ composer require cuberis/wp-rest-endpoints
 2. Add your endpoints
 3. Create a template
 
-For more information, see below...
-
 ## Adding Endpoints
 
 Note: when adding new endpoints, make sure to hook into `rest_api_init`.
@@ -96,13 +94,13 @@ When defining custom endpoints, you have complete control over your API response
 By default, endpoints will return the following JSON format:
 
 ```json
-{
+[
   {
     "id": 1234,
     "title": "My Post Title",
     "html": "<article>\n<h2>\nMy Post Title\n</h2>\n</article>\n"
   }
-}
+]
 ```
 
 `id` is the raw post ID, `title` is your post title returned from `get_the_title()` and `html` is the raw HTML returned from your template file.
@@ -117,6 +115,7 @@ The API would then return posts from the following WP_Query:
 
 ```
 new WP_Query([
+  'post_type' => 'my-post-type',
   'posts_per_page' => 4,
   'paged' => 2,
   'tax_query' => [
@@ -132,7 +131,7 @@ new WP_Query([
 ])
 ```
 
-Note: taxonmy queriew with this library currently only support the `slug` field type.
+Note: Taxonomy queries via endpoints currently only supports the `slug` field type.
 
 ## Optional Filters
 
