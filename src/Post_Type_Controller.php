@@ -70,7 +70,7 @@ class Post_Type_Controller extends Base_Controller {
 
       // otherwise, just add params to $args
       } else {
-        $args[$param] = htmlspecialchars($value);
+        $args[$param] = is_string($value) ? htmlspecialchars($value) : $value;
       }
     }
 
