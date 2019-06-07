@@ -107,9 +107,9 @@ By default, endpoints will return the following JSON format:
 
 ### Using URL Parameters
 
-Endpoints are powered by URL parameters which should match up identically with WP_Query vars. So for example, you could use:
+Endpoints are powered by URL parameters which should match up almost identically with WP_Query vars. So for example, you could use:
 
-https://my-website.com/wp-json/cuberis/v1/my-post-type?posts_per_page=4,paged=2,my_category=slug1,slug2
+https://my-website.com/wp-json/cuberis/v1/my-post-type?posts_per_page=4&paged=2&my_category=slug1,slug2
 
 The API would then return posts from the following WP_Query:
 
