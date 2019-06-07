@@ -17,8 +17,8 @@ Add custom REST API endpoints to your WordPress site. This package provides a ba
 composer require cuberis/wp-rest-endpoints
 ```
 
-2. Add your endpoints
-3. Create a template
+2. Add your desired endpoint(s)
+3. Create your individual result templates for the REST responses (if necessary)
 
 ## Adding Endpoints
 
